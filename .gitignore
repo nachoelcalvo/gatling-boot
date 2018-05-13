@@ -1,2 +1,30 @@
+*/bin/*
+
 *.class
-*.log
+
+# Package Files #
+*.war
+*.ear
+
+
+# Eclipse
+.settings/
+*.project
+*.classpath
+.prefs
+*.prefs
+.metadata/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+*.springBeans
