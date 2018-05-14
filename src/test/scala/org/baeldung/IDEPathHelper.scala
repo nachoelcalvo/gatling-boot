@@ -1,3 +1,5 @@
+package org.baeldung
+
 import java.nio.file.Path
 
 import io.gatling.commons.util.PathHelper._
