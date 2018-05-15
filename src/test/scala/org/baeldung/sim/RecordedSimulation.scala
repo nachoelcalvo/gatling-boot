@@ -12,7 +12,8 @@ class RecordedSimulation extends Simulation {
   val logger = LoggerFactory.getLogger(classOf[Nothing])
 
   val httpProtocol = http
-    .baseURL("http://localhost:8080")
+    // .baseURL("http://localhost:8080")
+    .baseURL("http://34.252.82.0:8080")
     .acceptHeader("application/hal+json")
 
   val feeder = Iterator.continually(Map("newIsbn" -> (newIsbn()), "newTitle" -> (newTitle())))
@@ -23,13 +24,11 @@ class RecordedSimulation extends Simulation {
         .get("/")
         .check(status.is(200))
     )
-    .pause(1)
 
     .exec(http("get_books")
       .get("/books")
       .check(status.is(200))
     )
-    .pause(1)
 
     .exec(
       http("create_book")
@@ -39,15 +38,14 @@ class RecordedSimulation extends Simulation {
         .body(StringBody("{ \"title\": \"${newTitle}\", \"isbn\": ${newIsbn} }"))
         .check(status.is(201))
     )
-    .pause(1)
 
     .exec(http("get_books_paginated")
       .get("/books?page=1&size=20")
       .check(status.is(200))
     )
 
-  setUp(scn.inject(atOnceUsers(10))).protocols(httpProtocol)
-  // setUp(scn.inject(rampUsers(3).over(3))).protocols(httpProtocol)
+  // setUp(scn.inject(atOnceUsers(100))).protocols(httpProtocol)
+  setUp(scn.inject(constantUsersPerSec(60) during (30))).protocols(httpProtocol)
 
   //
 
