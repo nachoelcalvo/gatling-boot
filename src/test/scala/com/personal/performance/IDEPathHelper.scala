@@ -1,4 +1,4 @@
-package org.performance
+package com.personal.performance
 
 import java.nio.file.Path
 

@@ -1,4 +1,4 @@
-package org.performance
+package com.personal.performance
 
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder

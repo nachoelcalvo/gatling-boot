@@ -1,5 +1,4 @@
-package org.performance
-
+package com.personal.performance
 
 object SingleGatlingRunner {
 

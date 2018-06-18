@@ -1,4 +1,4 @@
-package org.performance.sim
+package com.personal.performance.sim
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
