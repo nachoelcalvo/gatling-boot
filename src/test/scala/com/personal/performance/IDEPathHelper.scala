@@ -1,4 +1,4 @@
-package org.baeldung
+package org.performance
 
 import java.nio.file.Path
 

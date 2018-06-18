@@ -1,4 +1,4 @@
-package org.baeldung
+package org.performance
 
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder
