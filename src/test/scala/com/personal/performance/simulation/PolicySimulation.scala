@@ -24,19 +24,20 @@ class PolicySimulation extends Simulation {
     .check(status.is(200))
   )
 
-  val scnAddress = scenario("PolicySimulation").feed(feeder)
+  val scnCity = scenario("PolicySimulation").feed(feeder)
     .exec(http("get_policies_by_city")
     .get("/policies/addresses/${city}")
     .check(status.is(200))
   )
 
-//  setUp(scnAddress.inject(constantUsersPerSec(10) during (10))).protocols(httpProtocol)
-  setUp(scnAddress.inject(
+  //setUp(scn.inject(constantUsersPerSec(10) during (10))).protocols(httpProtocol)
+
+  setUp(scnCity.inject(
     nothingFor(4 seconds),
-    atOnceUsers(10),
+    atOnceUsers(5),
     rampUsers(10) over (5 seconds),
-    constantUsersPerSec(20) during (15 seconds),
-    constantUsersPerSec(20) during (15 seconds) randomized,
+    constantUsersPerSec(15) during (10 seconds),
+    constantUsersPerSec(15) during (10 seconds) randomized,
     rampUsersPerSec(10) to 20 during (10 seconds),
     rampUsersPerSec(10) to 20 during (10 seconds) randomized)).protocols(httpProtocol)
 
