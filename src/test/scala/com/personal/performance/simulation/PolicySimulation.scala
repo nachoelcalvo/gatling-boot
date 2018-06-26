@@ -32,14 +32,15 @@ class PolicySimulation extends Simulation {
 
   //setUp(scn.inject(constantUsersPerSec(10) during (10))).protocols(httpProtocol)
 
+  //Sample set up for a test scenario
   setUp(scnCity.inject(
     nothingFor(4 seconds),
     atOnceUsers(5),
     rampUsers(10) over (5 seconds),
     constantUsersPerSec(15) during (10 seconds),
     constantUsersPerSec(15) during (10 seconds) randomized,
-    rampUsersPerSec(10) to 20 during (10 seconds),
-    rampUsersPerSec(10) to 20 during (10 seconds) randomized)).protocols(httpProtocol)
+    rampUsersPerSec(10) to 30 during (10 seconds),
+    rampUsersPerSec(10) to 30 during (10 seconds) randomized)).protocols(httpProtocol)
 
   def getCity() = Random.shuffle(cities.toList).head
 }
